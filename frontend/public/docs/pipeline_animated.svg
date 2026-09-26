@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 200" width="100%" height="200" style="background: #09080e; border-radius: 10px; border: 1px solid rgba(139, 92, 246, 0.25);">
+  <defs>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="50%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="boxGlow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes flowRight {
+        0% { stroke-dashoffset: 60; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+      .flow-path {
+        stroke-dasharray: 8 6;
+        animation: flowRight 1.2s linear infinite;
+      }
+      .card-box {
+        transition: all 0.3s;
+      }
+      .tag {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </defs>
+
+  <!-- Step 1: User Prompt -->
+  <g transform="translate(30, 45)">
+    <rect width="140" height="110" rx="8" fill="#13111c" stroke="#8b5cf6" stroke-width="1.5" filter="url(#boxGlow)"/>
+    <rect width="140" height="24" rx="8" fill="#241b3a" />
+    <circle cx="14" cy="12" r="3" fill="#ef4444" />
+    <circle cx="24" cy="12" r="3" fill="#f59e0b" />
+    <circle cx="34" cy="12" r="3" fill="#10b981" />
+    <text x="75" y="15" fill="#d8b4fe" class="tag" font-weight="bold">INPUT</text>
+    
+    <text x="14" y="50" fill="#a78bfa" class="tag" font-size="11" font-weight="bold">User Utterance</text>
+    <text x="14" y="70" fill="#94a3b8" font-size="9.5" font-family="monospace">"Presentation on</text>
+    <text x="14" y="85" fill="#94a3b8" font-size="9.5" font-family="monospace">Wednesday. When</text>
+    <text x="14" y="100" fill="#94a3b8" font-size="9.5" font-family="monospace">should I prep?"</text>
+    <rect x="12" y="125" width="60" height="14" rx="3" fill="rgba(139, 92, 246, 0.2)" />
+    <text x="16" y="135" fill="#c084fc" font-size="8" class="tag">QUERY EVENT</text>
+  </g>
+
+  <!-- Connector 1 -> 2 -->
+  <line x1="170" y1="100" x2="230" y2="100" stroke="#4c1d95" stroke-width="2" />
+  <line x1="170" y1="100" x2="230" y2="100" stroke="#c084fc" stroke-width="2.5" class="flow-path" />
+  <polygon points="228,96 235,100 228,104" fill="#c084fc" />
+
+  <!-- Step 2: Intent Classification & Extraction -->
+  <g transform="translate(235, 45)">
+    <rect width="160" height="110" rx="8" fill="#13111c" stroke="#38bdf8" stroke-width="1.5" />
+    <rect width="160" height="24" rx="8" fill="#0f2638" />
+    <text x="80" y="16" fill="#38bdf8" text-anchor="middle" class="tag" font-weight="bold">INTENT ENGINE</text>
+
+    <text x="14" y="50" fill="#7dd3fc" class="tag" font-size="11" font-weight="bold">Claude Sonnet 3.5</text>
+    <text x="14" y="70" fill="#94a3b8" font-size="9.5" font-family="monospace">intent: decision_support</text>
+    <text x="14" y="86" fill="#94a3b8" font-size="9.5" font-family="monospace">entities: [presentation]</text>
+    <text x="14" y="102" fill="#94a3b8" font-size="9.5" font-family="monospace">target: start_day</text>
+
+    <rect x="12" y="125" width="85" height="14" rx="3" fill="rgba(56, 189, 248, 0.2)" />
+    <text x="16" y="135" fill="#38bdf8" font-size="8" class="tag">TOKEN SIMILARITY</text>
+  </g>
+
+  <!-- Connector 2 -> 3 -->
+  <line x1="395" y1="100" x2="455" y2="100" stroke="#0e3a59" stroke-width="2" />
+  <line x1="395" y1="100" x2="455" y2="100" stroke="#38bdf8" stroke-width="2.5" class="flow-path" />
+  <polygon points="453,96 460,100 453,104" fill="#38bdf8" />
+
+  <!-- Step 3: Neo4j Multi-Hop Graph Traversal -->
+  <g transform="translate(460, 35)">
+    <rect width="190" height="130" rx="8" fill="#120e24" stroke="#a855f7" stroke-width="2" filter="url(#boxGlow)"/>
+    <rect width="190" height="24" rx="8" fill="#2d134b" />
+    <text x="95" y="16" fill="#e9d5ff" text-anchor="middle" class="tag" font-weight="bold">NEO4J AURA GRAPH</text>
+
+    <!-- Subgraph Mini Vis -->
+    <circle cx="45" cy="55" r="9" fill="#8b5cf6" />
+    <text x="45" y="58" fill="#fff" font-size="7" font-weight="bold" text-anchor="middle">DEC</text>
+    
+    <circle cx="145" cy="55" r="9" fill="#10b981" />
+    <text x="145" y="58" fill="#fff" font-size="7" font-weight="bold" text-anchor="middle">OUT</text>
+
+    <circle cx="95" cy="90" r="9" fill="#06b6d4" />
+    <text x="95" y="93" fill="#fff" font-size="7" font-weight="bold" text-anchor="middle">RSN</text>
+
+    <line x1="54" y1="55" x2="136" y2="55" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="95" y="50" fill="#c084fc" font-size="7" text-anchor="middle" font-family="monospace">LED_TO</text>
+
+    <line x1="52" y1="62" x2="88" y2="84" stroke="#8b5cf6" stroke-width="1.5" />
+    <line x1="138" y1="62" x2="102" y2="84" stroke="#10b981" stroke-width="1.5" />
+
+    <text x="14" y="125" fill="#d8b4fe" font-size="9" font-family="monospace">MATCH (d:Decision)-[:LED_TO]-&gt;(o)</text>
+    <text x="14" y="137" fill="#6ee7b7" font-size="8.5" font-family="monospace">PageRank + Causal Depth</text>
+  </g>
+
+  <!-- Connector 3 -> 4 -->
+  <line x1="650" y1="100" x2="710" y2="100" stroke="#4c1d95" stroke-width="2" />
+  <line x1="650" y1="100" x2="710" y2="100" stroke="#c084fc" stroke-width="2.5" class="flow-path" />
+  <polygon points="708,96 715,100 708,104" fill="#c084fc" />
+
+  <!-- Step 4: Explainable Output -->
+  <g transform="translate(715, 45)">
+    <rect width="145" height="110" rx="8" fill="#0a1916" stroke="#10b981" stroke-width="1.5" />
+    <rect width="145" height="24" rx="8" fill="#083329" />
+    <text x="72" y="16" fill="#6ee7b7" text-anchor="middle" class="tag" font-weight="bold">SYNTHESIS</text>
+
+    <text x="12" y="50" fill="#34d399" class="tag" font-size="11" font-weight="bold">Explainable AI</text>
+    <text x="12" y="68" fill="#94a3b8" font-size="8.5" font-family="monospace">✔ Direct Plan</text>
+    <text x="12" y="82" fill="#94a3b8" font-size="8.5" font-family="monospace">✔ Historical Match</text>
+    <text x="12" y="96" fill="#94a3b8" font-size="8.5" font-family="monospace">✔ Why Evidence</text>
+
+    <rect x="10" y="122" width="75" height="15" rx="3" fill="rgba(16, 185, 129, 0.2)" />
+    <text x="14" y="133" fill="#6ee7b7" font-size="8" class="tag">91% CONFIDENCE</text>
+  </g>
+</svg>
