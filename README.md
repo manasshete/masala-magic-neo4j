@@ -330,18 +330,6 @@ To experience the full cognitive memory loop:
    ```
 5. Navigate to the **Calendar tab** (`/timeline`) to see the recommendation automatically mapped onto the 7-day hourly grid!
 
----
-
-## 🏆 Hackathon Judging Criteria Alignment
-
-| Evaluation Criteria | Memora Implementation & Technical Evidence |
-|---|---|
-| **Meaningful Use of Neo4j & Graph Thinking** | Not a key-value store. Utilizes multi-hop relationship traversals (`(:Decision)-[:BASED_ON]->(:Reason)`, `(:Decision)-[:LED_TO]->(:Outcome)`). Employs an in-memory **PageRank algorithm** over the subgraph to rank node centrality. |
-| **Agent Memory & Contextual Retrieval** | Solves LLM session amnesia by binding every utterance to permanent graph entities. Employs Jaccard vector similarity for deduplication and fuzzy memory recall. Explicitly notes when memory is absent rather than hallucinating. |
-| **Problem-Solution Fit** | Directly fulfills Problem Statement 2: *Personal Productivity & Decision Memory Agent*. Captures personal preferences, tracks commitments, and replays past choices with explainability. |
-| **Working Implementation** | Deployed live to Vercel with active connection to Neo4j Aura (`/api/health` returns `{"neo4j": true}`). 0 build warnings, fully typed TypeScript codebase. |
-| **Demo, Polish & Design Aesthetics** | Features the ACT Labs cyberpunk visual system: 60 FPS scanline ASCII companion, animated SVG flowcharts, Google Calendar schedule grid, and rich markdown formatting. |
-| **Innovation & Feedback Loops** | The outcome feedback loop (`Decision -[:LED_TO]-> Outcome -[:INFLUENCES]-> Decision`) closes the learning cycle, allowing the agent to continuously refine recommendations from real-world empirical results. |
 
 ---
 
