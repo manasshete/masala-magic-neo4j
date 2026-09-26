@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -16,16 +15,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Memora — Your Personal Decision Graph",
-  description: "An AI-powered personal productivity and decision memory agent backed by Neo4j.",
+  title: "Memora — Decision Graph AI",
+  description: "An AI-powered personal decision memory agent backed by Neo4j.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex bg-[#0c0a08] text-white">
-        <Sidebar />
-        <main className="flex-1 min-w-0 h-screen overflow-y-auto">{children}</main>
+      <body className="min-h-full bg-[#08070b] text-white">
+        {children}
       </body>
     </html>
   );
